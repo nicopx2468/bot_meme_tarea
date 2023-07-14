@@ -1,6 +1,7 @@
 import discord
 import random
 import os # Librería OS! 
+import typing
 
 # La variable intents almacena los privilegios del bot
 intents = discord.Intents.default()
@@ -11,7 +12,10 @@ intents.message_content = True
 # Crear un bot en la variable cliente y transferirle los privilegios
 client = discord.Client(intents=intents)
 
-print(len(os.listdir('memes_bot2')))
+
+
+
+
 
 @client.event
 async def on_ready():
@@ -32,4 +36,67 @@ async def on_message(message):
         # Enviar el archivo al usuario
         await message.channel.send(file=picture)
 
-client.run("MTExNDYwMjY1MTIxNzMxODAyMQ.GnZQ7p.a50j5HwxeP_ZbjV0xainTWeerP6DFle_xk3qVo") # TOKEN --> No borrar
+
+    if message.content.startswith('!val'):
+        # Obtener la lista de archivos en la carpeta de imágenes
+        image_files = os.listdir('valorant_character')
+        # Seleccionar un archivo aleatorio de la lista
+        random_file = random.choice(image_files)
+        # Ruta completa del archivo seleccionado
+        file_path = os.path.join('valorant_character', random_file)
+        # Abrir el archivo seleccionado
+        with open(file_path, 'rb') as f:
+            picture = discord.File(f)
+        # Enviar el archivo al usuario
+        await message.channel.send(file=picture)
+
+    
+    if message.content.startswith('!dani'):
+        # Obtener la lista de archivos en la carpeta de imágenes
+        image_files = os.listdir('gordos')
+        # Seleccionar un archivo aleatorio de la lista
+        random_file = random.choice(image_files)
+        # Ruta completa del archivo seleccionado
+        file_path = os.path.join('gordos', random_file)
+        # Abrir el archivo seleccionado
+        with open(file_path, 'rb') as f:
+            picture = discord.File(f)
+        # Enviar el archivo al usuario
+        await message.channel.send(file=picture)
+
+
+    if message.content.startswith('!chino'):
+        # Obtener la lista de archivos en la carpeta de imágenes
+        image_files = os.listdir('gordos')
+        # Seleccionar un archivo aleatorio de la lista
+        random_file = random.choice(image_files)
+        # Ruta completa del archivo seleccionado
+        file_path = os.path.join('gordos', random_file)
+        # Abrir el archivo seleccionado
+        with open(file_path, 'rb') as f:
+            picture = discord.File(f)
+        # Enviar el archivo al usuario
+        await message.channel.send(file=picture)
+
+
+    if message.content.startswith('!hello'): #Verificamos si el autor somos nosotros, a lo que el bot responderá :) 
+        await message.channel.send("Hola, soy un bot!")
+    elif message.content.startswith('!bye'):
+        await message.channel.send(":confused:")
+    elif message.content.startswith('!moyai'):
+        await message.channel.send(":moyai:") 
+    elif message.content.startswith('!pc'):
+        await message.channel.send("Cuando tenga un buen pc :pensive:")
+    elif message.content.startswith('!mal'):
+        await message.channel.send("Es que me va muy mal :pensive:")
+    elif message.content.startswith('!a mi'):
+        await message.channel.send("Pero porque me mata a miiiii :face_with_symbols_over_mouth:")
+    elif message.content.startswith('!m'):
+        await message.channel.send("¿miguel?")
+
+
+
+
+client.run("MTExNDYwMjY1MTIxNzMxODAyMQ.GrxeRn.yzwdmoio_saPco4460qZk7FRh6dUvaJEIp1Z8U") # TOKEN --> No borrar
+
+
